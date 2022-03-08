@@ -22,7 +22,7 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank (message="O nome é obrigatorio")
+	@NotBlank (message="O campo deve ser preenchido")
 	private String nome;
 	
 	@NotBlank (message="O campo deve ser preenchido")
@@ -40,6 +40,10 @@ public class Produto {
 	@ManyToOne
 	@JsonIgnoreProperties ("produtos")
 	private Categoria categoria;
+	
+	@ManyToOne
+	@JsonIgnoreProperties ("produtos")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -96,6 +100,13 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+}
